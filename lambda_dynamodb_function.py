@@ -3,7 +3,7 @@ import json
 from botocore.exceptions import ClientError
 def lambda_handler(event, context):
     data = []
-    TableName = "whizlabs_dynamodb_table"
+    TableName = "mylab_dynamodb_table"
     try:
         s3 = boto3.resource('s3', region_name='us-east-1')
         ddbclient = boto3.client('dynamodb', region_name='us-east-1')
@@ -20,7 +20,7 @@ def lambda_handler(event, context):
                     item_list[k] = str(value)
                 data.append(item_list)
             data = json.dumps(data)
-            responses3 = s3.Object('whizlabs2222222222', 'data.txt').put(Body=data)
+            responses3 = s3.Object('abcdynamodbtables', 'data.txt').put(Body=data)
             print("Completed Upload to S3")
         print("Lambda run completed")
         return {
